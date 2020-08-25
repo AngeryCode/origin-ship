@@ -1,0 +1,34 @@
+@mixin btn-size(
+  $btn-padding-x,
+  $btn-padding-y,
+  $btn-font-size,
+  $btn-border-radius
+) {
+  padding: $btn-padding-x $btn-padding-y;
+  font-size: $btn-font-size;
+  border-radius: $btn-border-radius;
+}
+
+@mixin btn-type(
+  $btn-background,
+  $btn-border,
+  $btn-color,
+  $btn-background-hover: lighten($btn-background, 7.5%),
+  $btn-border-hover: lighten($btn-border, 10%),
+  $btn-color-hover: $btn-color
+) {
+  background-color: $btn-background;
+  border-color: $btn-border;
+  color: $btn-color;
+  &:hover {
+    background-color: $btn-background-hover;
+    border-color: $btn-border-hover;
+    color: $btn-color-hover;
+  }
+  &:focus,
+  .focus {
+    background-color: $btn-background-hover;
+    border-color: $btn-border-hover;
+    color: $btn-color-hover;
+  }
+}
