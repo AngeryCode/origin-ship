@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useState} from 'react'
 import classnames from 'classnames'
 import { MenuItemProps } from './MenuItem'
 
@@ -16,39 +16,51 @@ export interface MenuProps {
 export interface IMenuContext {
   index?: string
   onSelect?: onSelectType
+  mode?: MenuMode,
+  defaultOpenSubMenus?: string[]
 }
 
 export const MenuContext = React.createContext<IMenuContext>({ index: '0' })
 const Menu: React.FC<MenuProps> = (props) => {
-  const { defaultIndex, className, mode, style, onSelect, defaultOpenSubMenus, children } = props
+  const { defaultIndex, className, mode, style, onSelect, children, defaultOpenSubMenus } = props
+  const [currentIndex, setActiveIndex] = useState(defaultIndex)
   const classes = classnames('origin-menu', className, {
     [`menu-${mode}`]: mode
   })
-  const renderChildren = () =>
-    React.Children.map(children, (child, index) => {
-      const childElemet = child as React.FunctionComponentElement<MenuItemProps>
-      const { name } = childElemet.type
-      if (name === 'MenuItem') {
-        return React.cloneElement(childElemet, {
-          index: index.toString()
-        })
-      } else {
-        console.warn('Menu Component have a children Element Which is not a MenuItem component')
-      }
-    })
   const handleSelect = (index: string) => {
+    setActiveIndex(index)
+    alert(index)
     if (onSelect) {
       onSelect(index)
     }
   }
   const passedContext: IMenuContext = {
-    index: '1',
-    onSelect: handleSelect
+    index: currentIndex,
+    onSelect: handleSelect,
+    mode,
+    defaultOpenSubMenus
   }
+
+  const renderChildren = () => {
+    return React.Children.map(children, (child, index) => {
+      const childElement = child as React.FunctionComponentElement<MenuItemProps>
+      const {displayName} = childElement.type
+      if(displayName === 'MenuItem' || displayName === 'SubMenu'){
+        return React.cloneElement(childElement, {
+          index: index.toString()
+        })
+      }else{
+        console.error('warning: Menu has a child element which is not a MenuItem')
+      }
+    })
+  }
+
   return (
     <>
-      <ul className={classes}>
-        <MenuContext.Provider value={passedContext}>{renderChildren}</MenuContext.Provider>
+      <ul className={classes} style={style} data-testid='test-menu'>
+        <MenuContext.Provider value={passedContext}>
+          {renderChildren()}
+        </MenuContext.Provider>
       </ul>
     </>
   )
