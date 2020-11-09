@@ -12,7 +12,6 @@ export interface MenuItemProps {
 const MenuItem: React.FC<MenuItemProps> = (props) => {
   const { index, disabled, children, className, style } = props
   const context = useContext(MenuContext)
-  console.log(context)
   const classes = classnames('menu-item', className, {
     'is-disabled': disabled,
     'is-active': context.index === index

@@ -29,7 +29,6 @@ const Menu: React.FC<MenuProps> = (props) => {
   })
   const handleSelect = (index: string) => {
     setActiveIndex(index)
-    alert(index)
     if (onSelect) {
       onSelect(index)
     }
