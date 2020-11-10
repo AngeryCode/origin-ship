@@ -1,7 +1,9 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import classnames from 'classnames'
 import { MenuContext } from './Menu'
 import { MenuItemProps } from './MenuItem'
+import Icon from '../Icon/Icon'
+import Transition from '../Trasition/Transition'
 
 export interface SubMenuProps {
   index?: string
@@ -14,15 +16,22 @@ const SubMenu: React.FC<SubMenuProps> = (props) => {
   const { index, title, className, children, disabled } = props
   const context = useContext(MenuContext)
   const opendMenuArry = context.defaultOpenSubMenus as Array<string>
-  let opend = false
-  if (opendMenuArry && context.mode === 'vertical') {
-    opend = index ? opendMenuArry.includes(index) : false
-  }
-  const [isOpen, setOpen] = useState(opend)
+  const [isOpen, setOpen] = useState(false)
+  useEffect(() => {
+    if (opendMenuArry && context.mode === 'vertical') {
+      setOpen(index ? opendMenuArry.includes(index) : false)
+    }
+    if (context.index?.split('-')[0] === index) {
+      setOpen(true)
+    } else {
+      setOpen(context.index === index)
+    }
+  }, [opendMenuArry, context, index])
   const classes = classnames('menu-item sub-menu', {
     className,
     'is-active': context.index === index,
-    'is-disabled': disabled
+    'is-disabled': disabled,
+    'is-open': isOpen
   })
   const submenuClasses = classnames('origin-submenu', {
     'is-open': isOpen
@@ -74,8 +83,13 @@ const SubMenu: React.FC<SubMenuProps> = (props) => {
 
   return (
     <li className={classes} {...hoverEvents}>
-      <div className="title" {...clickEvents}>{title}</div>
-      <ul className={submenuClasses}>{renderChildren()}</ul>
+      <div className="title" {...clickEvents}>
+        {title}
+        <Icon icon="angle-down" />
+      </div>
+      <Transition in={isOpen} timeout={300} animationName="zoom-in-top">
+        <ul className={submenuClasses}>{renderChildren()}</ul>
+      </Transition>
     </li>
   )
 }

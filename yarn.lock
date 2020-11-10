@@ -1154,21 +1154,21 @@
   resolved "https://registry.npm.taobao.org/@fortawesome/fontawesome-common-types/download/@fortawesome/fontawesome-common-types-0.2.32.tgz#3436795d5684f22742989bfa08f46f50f516f259"
   integrity sha1-NDZ5XVaE8idCmJv6CPRvUPUW8lk=
 
-"@fortawesome/fontawesome-svg-core@^1.2.26":
+"@fortawesome/fontawesome-svg-core@^1.2.26", "@fortawesome/fontawesome-svg-core@^1.2.32":
   version "1.2.32"
   resolved "https://registry.npm.taobao.org/@fortawesome/fontawesome-svg-core/download/@fortawesome/fontawesome-svg-core-1.2.32.tgz#da092bfc7266aa274be8604de610d7115f9ba6cf"
   integrity sha1-2gkr/HJmqidL6GBN5hDXEV+bps8=
   dependencies:
     "@fortawesome/fontawesome-common-types" "^0.2.32"
 
-"@fortawesome/free-solid-svg-icons@^5.12.0":
+"@fortawesome/free-solid-svg-icons@^5.12.0", "@fortawesome/free-solid-svg-icons@^5.15.1":
   version "5.15.1"
   resolved "https://registry.npm.taobao.org/@fortawesome/free-solid-svg-icons/download/@fortawesome/free-solid-svg-icons-5.15.1.tgz#e1432676ddd43108b41197fee9f86d910ad458ef"
   integrity sha1-4UMmdt3UMQi0EZf+6fhtkQrUWO8=
   dependencies:
     "@fortawesome/fontawesome-common-types" "^0.2.32"
 
-"@fortawesome/react-fontawesome@^0.1.8":
+"@fortawesome/react-fontawesome@^0.1.12", "@fortawesome/react-fontawesome@^0.1.8":
   version "0.1.12"
   resolved "https://registry.npm.taobao.org/@fortawesome/react-fontawesome/download/@fortawesome/react-fontawesome-0.1.12.tgz#fbdea86e8b73032895e6ded1ee1dbb1874902d1a"
   integrity sha1-+96obotzAyiV5t7R7h27GHSQLRo=
@@ -1702,6 +1702,13 @@
   version "16.9.8"
   resolved "https://registry.npm.taobao.org/@types/react-dom/download/@types/react-dom-16.9.8.tgz#fe4c1e11dfc67155733dfa6aa65108b4971cb423"
   integrity sha1-/kweEd/GcVVzPfpqplEItJcctCM=
+  dependencies:
+    "@types/react" "*"
+
+"@types/react-transition-group@^4.4.0":
+  version "4.4.0"
+  resolved "https://registry.npm.taobao.org/@types/react-transition-group/download/@types/react-transition-group-4.4.0.tgz#882839db465df1320e4753e6e9f70ca7e9b4d46d"
+  integrity sha1-iCg520Zd8TIOR1Pm6fcMp+m01G0=
   dependencies:
     "@types/react" "*"
 

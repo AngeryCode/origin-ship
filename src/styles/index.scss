@@ -5,10 +5,14 @@
 
 @import "mixin";
 
+@import "animation";
+
 @import "../components/Button/style";
 
 @import "../components/Menu/style";
 
 @import "../components/Tabs/style";
+
+@import "../components/Icon/style";
 
 @import '~antd/dist/antd.css';
