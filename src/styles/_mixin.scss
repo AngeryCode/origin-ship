@@ -1,9 +1,4 @@
-@mixin btn-size(
-  $btn-padding-x,
-  $btn-padding-y,
-  $btn-font-size,
-  $btn-border-radius
-) {
+@mixin btn-size($btn-padding-x, $btn-padding-y, $btn-font-size, $btn-border-radius) {
   padding: $btn-padding-x $btn-padding-y;
   font-size: $btn-font-size;
   border-radius: $btn-border-radius;
@@ -30,5 +25,34 @@
     background-color: $btn-background-hover;
     border-color: $btn-border-hover;
     color: $btn-color-hover;
+  }
+}
+
+@mixin zoom-animation(
+  $direction: 'top',
+  $scaleStart: scaleY(0),
+  $scaleEnd: scaleY(1),
+  $origin: center top
+) {
+  .zoom-in-#{$direction}-enter {
+    opacity: 0;
+    transform: $scaleStart;
+  }
+  .zoom-in-#{$direction}-enter-active {
+    opacity: 1;
+    transform: $scaleEnd;
+    transition: transform 300ms cubic-bezier(0.23, 1, 0.32, 1) 100ms,
+      opacity 300ms cubic-bezier(0.23, 1, 0.32, 1) 100ms;
+    transform-origin: $origin;
+  }
+  .zoom-in-#{$direction}-exit {
+    opacity: 1;
+  }
+  .zoom-in-#{$direction}-exit-active {
+    opacity: 0;
+    transform: $scaleStart;
+    transition: transform 300ms cubic-bezier(0.23, 1, 0.32, 1) 100ms,
+    opacity 300ms cubic-bezier(0.23, 1, 0.32, 1) 100ms;
+    transform-origin: $origin;
   }
 }

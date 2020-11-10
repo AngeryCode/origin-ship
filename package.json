@@ -3,16 +3,24 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^1.2.32",
+    "@fortawesome/free-solid-svg-icons": "^5.15.1",
+    "@fortawesome/react-fontawesome": "^0.1.12",
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",
     "@testing-library/user-event": "^7.1.2",
     "@types/classnames": "^2.2.10",
+    "@types/jest": "^26.0.10",
+    "@types/react-transition-group": "^4.4.0",
     "@types/typescript": "^2.0.0",
+    "antd": "^4.8.0",
     "classnames": "^2.2.6",
+    "jest": "^24.9.0",
     "node-sass": "^4.14.1",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
-    "react-scripts": "3.4.3"
+    "react-scripts": "3.4.3",
+    "vikingship": "^1.0.2"
   },
   "scripts": {
     "start": "react-scripts start",
