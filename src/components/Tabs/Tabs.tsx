@@ -1,6 +1,7 @@
 import React, { createContext, useEffect, useState } from 'react'
 import classnames from 'classnames'
 import { TabsItemProps } from './TabsItem'
+
 type TabsMode = 'horizontal' | 'vertical'
 
 interface MTabsProps {

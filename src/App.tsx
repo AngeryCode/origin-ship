@@ -10,7 +10,8 @@ import { library } from '@fortawesome/fontawesome-svg-core'
 import { fas } from '@fortawesome/free-solid-svg-icons'
 import { Tabs } from 'antd'
 import Icon from './components/Icon/Icon'
-import Transition from './components/Trasition/Transition'
+import Transition from './components/Trasition/Transition' 
+import Input from './components/Input/Input'
 library.add(fas)
 const { TabPane } = Tabs
 const App: React.FC = () => {
@@ -18,6 +19,7 @@ const App: React.FC = () => {
     console.log(index)
   }
   const [active, setActive] = useState(false)
+  const [inputDefaultVal, setInputVal] = useState('')
   return (
     <div className="App">
       App
@@ -92,6 +94,29 @@ const App: React.FC = () => {
           </Button>
         </div>
       </Transition>
+      <br/>
+      <Input placeholder="我是input"></Input>
+      <br/>
+      <Input  disabled></Input>
+      <br/>
+      <Input icon="calendar-alt" value={inputDefaultVal} onChange={(e) => { setInputVal(e.target.value)} }></Input>
+      <br/>
+      <Input prepend="https://" icon="coffee"></Input>
+      <br/>
+      <Input append=".com" icon="coffee"></Input>
+      <br/>
+      <Input prepend="https://" append=".com" icon="coffee"></Input>
+      <br/>
+      <br/>
+      <br/>
+      <br/>
+      <br/>
+      <br/>
+      <br/>
+      <br/>
+      <br/>
+      <br/>
+
     </div>
   )
 }
